@@ -1,0 +1,18 @@
+<div id="box">
+    <div id="title">
+        <div id="firstline">Cook Systems</div>
+        <div id="description"> A final App</div>
+    </div>
+    <div id="loginbox">
+        <img src="../../icon.jpg">
+        <form (ngSubmit)="login(emailInput.value, passwordInput.value)" id="login-fomr">
+            <label for="email">email</label><br>
+            <input #emailInput type="email" class="login-input" id="email" required><br><br>
+            <label for="password">password</label><br>
+            <input #passwordInput type="password" class="login-input" id="password"  required><br>
+            <button id="login-button"  type="submit">Login</button>
+         </form>
+    </div>
+
+</div>
+

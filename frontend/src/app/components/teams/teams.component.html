@@ -1,0 +1,73 @@
+<div class="teams-container">
+  <h1 class="heading">Teams</h1>
+  <div class="teams-grid">
+    <div *ngFor="let team of teams" class="team-card" (click)="goToProjects(team.id)">
+      <div class="team-header">
+        <span class="team-name">{{ team.name }}</span>
+        <span class="project-style"> # of Projects: {{ team['projectCount'] || 0 }}  </span>
+      </div>
+      <button (click)="deleteTeam(team)" class="delete-button" *ngIf="userAdmin" > X </button>
+      <div class="team-members">
+        <p class="team-members-heading">Members</p>
+      </div>
+        <div class="members-grid">
+          <div *ngFor="let user of team.teammates" class="team-member">
+            <div class = "member-name-container">
+            <h3 class="member-name">
+              {{ user.profile.firstName }} {{ user.profile.lastName[0] }}.
+            </h3>
+          </div>
+          
+          </div>
+        </div>
+    </div>
+
+    <div class="new-team-card" (click)="openAddTeamOverlay()" *ngIf="userAdmin">
+      <div class="new-team-content">
+        <div class="plus-icon">+</div>
+        <p class="p-new-team">New Team</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isAddTeamOverlayOpen" class="overlay">
+    <div class="overlay-content">
+    <button class="close-btn" (click)="closeAddTeamOverlay()">✕</button>
+
+      <div class="form-group">
+        <label>Team Name</label>
+        <input [(ngModel)]="newTeam.name" type="text"  class="underline-input">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="newTeam.description" type="text"  class="underline-input">
+      </div>
+
+      <div class="form-group2">
+        <label class="select-title">Select Members</label>
+        <div class="members-select">
+        <select [(ngModel)]="newTeam.teammates" (change)="addSelectedUser($event)" class="select-dropdown">
+            <option disabled selected value="">Pick an option</option>
+            <option *ngFor="let user of members" [value]="user.id">{{ user.profile.firstName }} {{ user.profile.lastName[0] }}.</option>
+          </select>
+      </div>
+
+      <div class="selected-members">
+        <div *ngFor = "let user of selectedTeammateIds" class="member-chip">
+            <div *ngIf="selectedTeammateIds.includes(user)" class="member-name-container">
+              <span class="member-name">
+                {{ user.profile.firstName }} {{ user.profile.lastName[0] }}.
+              </span>
+              </div>
+              <button (click) = removeMember(user.id)
+                class="remove-member"
+              >✕</button>
+        </div>
+      </div>
+
+      <button 
+        class="submit-btn" 
+        (click)="postTeams()" (click)="closeAddTeamOverlay()" >
+        Submit
+      </button>

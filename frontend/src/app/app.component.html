@@ -1,0 +1,25 @@
+<body>
+  <div *ngIf="isLoggedIn">
+    <div id="box" *ngIf="showNavbar">
+      <div id="topleftAdmin" *ngIf="isLoggedIn">
+        <div id="icon"></div>
+        <div id="note" *ngIf="isAdmin">Acting as admin</div>
+        <div id="note" *ngIf="!isAdmin">{{workerName}}</div>
+      </div>
+      <div id="navbar" *ngIf="isAdmin">
+        <app-navbar id="bar"></app-navbar>
+      </div>
+      <div id="navbar-worker" *ngIf="!isAdmin">
+        <app-navbar-worker></app-navbar-worker>
+      </div>
+    </div>
+
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div id="login" *ngIf="!isLoggedIn">
+    <app-login></app-login>
+  </div>
+</body>

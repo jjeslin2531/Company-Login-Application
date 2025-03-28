@@ -1,0 +1,122 @@
+<div class="projects-container">
+  <!-- Back Nav and Title -->
+  <div class="header-section">
+    <div class="back-button" (click)="navigateBackToTeams()">&lt; Back</div>
+    <h1 class="title">Projects for {{ teamName || "Team " + teamId }}</h1>
+
+    <!-- Admin Only New Button -->
+    <button class="new-button" *ngIf="isAdmin" (click)="openCreateProjectOverlay()">New</button>
+  </div>
+
+  <!-- Projects List -->
+  <div class="projects-list">
+    <div class="project-item" *ngFor="let project of projects">
+      <!-- Project Details -->
+      <div class="project-details">
+        <!-- New container for name and status on same line -->
+        <div class="project-name-container">
+          <h2 class="project-name">{{ project.name }}</h2>
+          <span
+            class="project-status"
+            [ngClass]="{ active: project.active, inactive: !project.active }"
+          >
+            {{ project.active ? "Active" : "Inactive" }}
+          </span>
+        </div>
+        <p class="project-description">{{ project.description }}</p>
+      </div>
+
+      <!-- Project Actions -->
+      <div class="project-actions">
+        <button class="edit-button" (click)="openEditProjectOverlay(project)">
+          Edit
+        </button>
+      </div>
+    </div>
+
+    <!-- No Projects Message -->
+    <div class="no-projects" *ngIf="projects.length === 0">
+      <p>No projects found for this team.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Create Project Overlay -->
+<div class="overlay" *ngIf="isCreateProjectOverlayOpen">
+  <div class="overlay-content">
+    <div class="overlay-header">
+      <h2>Create Project</h2>
+      <button class="close-button" (click)="closeCreateProjectOverlay()">
+        x
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label for="project-name">Project Name</label>
+      <input
+        id="project-name"
+        type="text"
+        [(ngModel)]="newProject.name"
+        placeholder="Enter project name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="project-description">Description</label>
+      <input
+        id="project-description"
+        type="text"
+        [(ngModel)]="newProject.description"
+        placeholder="Enter project description"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button class="submit-button" (click)="createProject()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Project Overlay -->
+<div class="overlay" *ngIf="isEditProjectOverlayOpen && editingProject">
+  <div class="overlay-content">
+    <div class="overlay-header">
+      <h2>Edit Project</h2>
+      <button class="close-button" (click)="closeEditProjectOverlay()">
+        x
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label for="edit-project-name">Project Name</label>
+      <input
+        id="edit-project-name"
+        type="text"
+        [(ngModel)]="editingProject.name"
+        placeholder="Enter project name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="edit-project-description">Description</label>
+      <input
+        id="edit-project-description"
+        type="text"
+        [(ngModel)]="editingProject.description"
+        placeholder="Enter project description"
+      />
+    </div>
+
+    <div class="form-group" *ngIf="isAdmin">
+      <label for="edit-project-active">Active?</label>
+      <select id="edit-project-active" [(ngModel)]="editingProject.active">
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button class="submit-button" (click)="updateProject()">Save</button>
+    </div>
+  </div>
+</div>

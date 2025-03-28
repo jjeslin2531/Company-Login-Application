@@ -1,0 +1,11 @@
+
+
+<div id="singular-announcement" *ngIf="annoucement" >
+    <div id="annoucement-header">
+        <div id="first-name"> {{annoucement.author.profile.firstName}}</div>
+        <div id="date">{{annoucement.date | date: 'longDate' }}</div>
+    </div>
+    <!-- <div id="title">{{annoucement.title}}</div> -->
+    <div id="message">{{annoucement.title}}<br> {{annoucement.message}}</div>
+    <!-- {{annoucement}} -->
+</div>

@@ -1,0 +1,38 @@
+<div id="align-items">
+  <div id="annoucements-box">
+    <div id="topAnnoucement">
+      <div id="title">Announcements</div>
+      <div id="newButton">
+        <button id="newMessage" (click)="openModal()" *ngIf="isAdmin">New</button>
+      </div>
+    </div>
+    <div id="line">
+      <hr />
+    </div>
+    <div id="annoucement-list">
+      <div *ngFor="let announce of myAnnoucements" class="announcement-item">
+        <app-annoucements-entity [annoucement]="announce"></app-annoucements-entity>
+        <button (click)="deleteAnnouncement(announce)" class="delete-button"  *ngIf="isAdmin"> X </button>
+      </div>
+    </div>
+
+    <!-- Modal (Popup window) -->
+    <div *ngIf="modalVisible" id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <div id="heading-description">**name should be generated from posting user**</div>
+        <form (submit)="submitNewMessage()" id="message-form">
+          <div>
+            <label for="title">Title</label><br>
+            <input type="text" id="title-modal" [(ngModel)]="newMessageToPost.title" name="title" required />
+          </div>
+          <div>
+            <label for="message">Message</label><br>
+            <textarea id="message" [(ngModel)]="newMessageToPost.message" name="message" required></textarea>
+          </div>
+          <button type="submit" id="submit-modal">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

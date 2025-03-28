@@ -1,0 +1,21 @@
+<div *ngIf="companies">
+        <div id="select-area">
+            <div id="prompt">
+                <h1 id="select-title"> Select Company </h1>
+            </div>
+            <div id="companies">
+          
+                    <label for="option"></label>
+                    <select name="option" id="option" (change)="onChange($event)">
+                        <option disabled selected value>Pick an Option</option>
+                        <option *ngFor="let c of companies" [value]="c.id">{{ c.name }}</option>
+                    </select>
+                    <br><br>
+                   
+            </div>
+        </div>
+</div>
+
+
+
+                      

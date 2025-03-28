@@ -1,0 +1,33 @@
+#select-area {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+#select-title {
+    color: #1BA098;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 99px;
+    line-height: 132px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+#option {
+    background-color: white;
+    width: 383.94px;
+    height: 85.78px;
+    border-radius: 18.89px;
+    border: 2.36px solid black;
+    padding: 18.89px 37.78px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+    font-size: 37.78px;
+    line-height: 47.22px;
+    letter-spacing: 0%;
+    color: #5533FF;
+    text-align: center;
+}

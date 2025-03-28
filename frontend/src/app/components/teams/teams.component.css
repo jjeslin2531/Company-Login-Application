@@ -1,0 +1,342 @@
+
+body {
+    background-color: #0D1B2A; /* Dark background */
+    color: #A9C0C9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+    height: 100%;  /* Full viewport height */
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .heading{ /* Checked*/
+    color: #1aa097;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    width: 100%;
+    padding-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  /* Teams Container */ /* Checked*/
+  .teams-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    margin: auto;
+    padding-top: 40px;
+    height: auto;
+  
+  }
+  /* Grid Layout */
+  .teams-grid { /* Checked*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+    
+}
+
+  /* Team Card */
+  .team-card { /* Checked*/
+    background: #102c49; /* Dark blue */
+    border-radius: 12px;
+    padding: 0 20px 20px 20px;
+    width: 260px;
+    height: auto;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+  }
+  /* Team Header */
+  .team-header { /* Checked*/
+    display: flex;
+    flex-direction: row; 
+    background: #0b2d46;
+    padding: 10px 12px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .team-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: -20px;
+    width: 150%; 
+    height: 2px;
+    background-color: #DEB992; 
+  }
+  .team-name {/* Checked*/
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  /* Team Members Section */
+  .team-members { /* Checked*/
+    display: flex;
+    padding: 10px 0px 0px 0px;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+
+  }
+  .team-member { /* Checked*/
+    background-color: #1aa097;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 35px;
+    min-height: 35px;
+    border-radius: 10px;
+    }
+
+  .members-grid{ /* Checked*/
+    display: grid;
+    grid-template-columns: 120px 120px;
+    gap: 10px;
+    justify-content: center;
+    width: 90%;
+    height: 50%;
+  }
+  .team-members-heading { /* Checked*/
+    font-size: 16px;
+    color: #e0e1dd;
+    align-self: center;
+  }
+
+  .member-name {/* Checked*/
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    padding: 0px 10px;
+    font-size: 16px;
+    font-weight: 400;
+    
+  }
+
+
+  /* New Team Card */
+  .new-team-card {/* Checked*/
+    border: 2px solid #DEB992;
+    border-radius: 12px;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .new-team-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .new-team-content { /* Checked*/
+    text-align: center;
+    color: #DEB992;
+    justify-content: center;
+  }
+
+  .plus-icon { /* Checked*/
+    font-size: 150px;
+    font-weight: 1;
+    color: #DEB992;
+    margin-bottom: 0;    
+  }
+
+  .p-new-team{ /* Checked*/
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
+
+
+
+
+  /*Overlay Stuff*/
+
+  .overlay { /* Checked*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .overlay-content { /* Checked*/
+    background-color: #0B2D45;
+    border-radius: 12px;
+    width: 400px;
+    padding: 30px;
+    position: relative;
+    color: #A9C0C9;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #DEB992;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .form-group {/* Checked*/
+    margin-bottom: 20px;
+  }
+  
+  .form-group label { /* Checked*/
+    color: #DEB992;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .underline-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #4A5664;
+    color: #A9C0C9;
+    padding: 8px 0;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .underline-input:focus {
+    border-bottom-color: #DEB992;
+  }
+
+  .members-select {
+    border-radius: 6px;
+    padding: 12px;
+  }
+
+  .select-dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6B7380;
+    cursor: pointer;
+  }
+  
+  .selected-members {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .member-chip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1DB9A1; /* Teal background */
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex-direction: column;
+    position: relative;
+  
+  }
+
+  .remove-member { /* Checked*/
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgb(202, 67, 67);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 125px;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    }
+  
+  .submit-btn { /* Checked*/
+    width: 100%;
+    padding: 12px;
+    background-color: #1AA097;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  .form-group input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #DEB992;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+  }
+
+  .select-title{
+    text-align: center;
+  }
+  .form-group2{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  .project-style{
+    color: rgba(255, 255, 255, 0.6)
+  }
+
+  .member-name-container{
+    width: 100%;
+  }
+
+
+  .delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .delete-button:hover {
+    background-color: darkred;
+  }

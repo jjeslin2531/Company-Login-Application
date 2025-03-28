@@ -1,0 +1,95 @@
+
+<div id="box">
+    <div id="title">
+        <div id="firstline">User Registry</div>
+        <div id="description">A general view of all your members in your organization</div>
+    </div>
+    <div id="userbox">
+        <table *ngIf="users.length > 0; else noUsers" >
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Admin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let u of users">
+                <td>{{ u.profile.firstName }} {{ u.profile.lastName }}</td>
+                <td>{{ u.profile.email }}</td>
+                <td [ngClass]="{ 'boolean-true': u.active, 'boolean-false': !u.active }">
+                    {{ u.active ? 'YES' : 'NO' }}
+                </td>
+                <td [ngClass]="{ 'boolean-true': u.admin, 'boolean-false': !u.admin }">
+                    {{ u.admin ? 'YES' : 'NO' }}
+                <td>{{ u.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noUsers>
+            <p>No users available.</p>
+          </ng-template>
+          <input type="submit" value="Add User" id="user-button" (click)="openAddUserOverlay()">
+    </div>
+</div>
+<div *ngIf="isAddUserOverlayOpen" class="overlay">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <button class="close-button" (click)="closeAddUserOverlay()">×</button>
+      </div>
+      <div id="group1">
+      <div class="form-group" >
+        <label>Username</label>
+        <input [(ngModel)]="newUser.credentials.username" type="text">
+      </div>
+      <div class="form-group" id="myPW">
+        <label>Password</label>
+        <input [(ngModel)]="newUser.credentials.password" type="password">
+      </div>
+    </div>
+      <div class="form-group">
+        <label>First Name</label>
+        <input [(ngModel)]="newUser.profile.firstName" type="text">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [(ngModel)]="newUser.profile.lastName" type="text">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input [(ngModel)]="newUser.profile.email" type="email">
+      </div>
+      <div class="form-group">
+        <label>Phone</label>
+        <input [(ngModel)]="newUser.profile.phone" type="tel">
+      </div>
+      <div class="form-group" id="overlay-button">
+        <label>Make User an Admin Role?</label>
+        <select [(ngModel)]="newUser.admin" id="admin-role">
+          <option disabled selected value="">Pick an option</option>
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+      <div class="form-actions" id="submit-button-form">
+        <button (click)="addUser()" class="submit-button">Submit</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

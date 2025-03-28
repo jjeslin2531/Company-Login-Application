@@ -1,0 +1,76 @@
+body {
+    background-color: #051622;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 250vh;
+    overflow-x: hidden;
+}
+
+#box {
+    border-color: #DEB992;
+    height: 120px;
+    width: 100%;
+    border-width: medium;
+    border-style: solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #051622;
+    z-index: 1000;
+}
+
+#topleftAdmin {
+    display: inline-block;
+    height: 100%;
+    width: 400px;
+}
+
+#navbar, #navbar-worker {
+    float: right;
+    margin-top: 30px;
+    margin-right: 2%;
+}
+
+#icon {
+    height: 90px;
+    width: 100px;
+    margin-top: 15px;
+    background-size: cover;
+    background-image: url("icon.jpg");
+    display: inline-block;
+}
+
+#note {
+    color: #F24E1E;
+    font-size: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-left: 4%;
+    font-weight: 200;
+}
+
+#content {
+    margin-top: 130px; 
+    padding: 20px;
+    width: 100%;
+    min-height: calc(100vh - 130px); 
+    overflow-y: auto; 
+}
+
+
+.announcement {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    background-color: #051622;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 250vh;
+    overflow-x: hidden;
+  }
